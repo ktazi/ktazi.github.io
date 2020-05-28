@@ -1,21 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Visa Game</title>
     <style>
-
+        body{
+            background-color : white;
+        }
+        main{
+            margin-left: 20%;
+            margin-right: 20%;
+            padding: 10px;
+            border: 1px solid;
+        }
+        .cont{
+            text-align: center;
+        }
+        #logo{
+            font-family: "Courier New";
+            font-size: 50px;
+            color : black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #desc{
+            margin-left: 20%;
+            margin-right: 20%;
+            font-family: "Courier New";
+            font-size: 20px;
+            padding: 10px;
+            border: 1px solid;
+        }
     </style>
 </head>
 <body>
     <header>
-
+        <div class="cont"><h1 id="logo">Game of Visa</h1></div>
+        <p id="desc">Après avoir travaillé durement pendant 30 ans en tant que secrétaire au sein d'un cabinet d'avocat,
+            vous n'en pouvez plus de faire de la paperasse. Votre salut ? Un séjour sur l'ile paradisiaque de Onéchyan,
+            absolument magnifique mais réputée quasi-inaccessible à cause de procédures administratives trop complexes.
+            Triompherez vous de ce dictat bureaucrate ? Eviterez-vous le burnout ? C'est à vous de jouer.
+        </p>
     </header>
     <main>
-
+        <div class="cont"><h2 id="titre"></h2></div>
+        <p id="context"></p>
+        <div class="cont">
+            <select name="Action" id="actSel">
+                <option id="op1" value="o1"></option>
+                <option id="op2" value="o2"></option>
+                <option id="op3" value="o3"></option>
+            </select>
+            <button onclick="valider()">Valider</button>
+        </div>
     </main>
     <script type="text/javascript">
+        let action = "0";
+        let table = {
+            "0" : {
+                  "titre" : "Que faire ?",
+                "context" : "C'est bien beau d'avoir de l'ambition, mais maintenant, il faut agir. Vous pouvez toujours essayer de vous rendre sur leur SITE WEB complètement cassé. Autre option, vous pouvez tenter de leur écrire une LETTRE. Sinon, plus radical de vous RENDRE SUR PLACE",
+                "o1":{
+                      "text":"Site web",
+                      "next":"0"
+                },
+                "o2":{
+                    "text":"Lettre",
+                    "next":"0"
+                },
+                "o3":{
+                    "text":"Rendre sur place",
+                    "next":"1"
+                }},
+            "1" : {
+                "titre" : "Vous rendre à l'Ambassade",
+                "context" : "Vous prenez votre courage à deux mains et décidez de vous rendre sur place. Une fois arrivé devant la porte, un premier obstacle vous fait face : une queue interminable. Que faire en cette situation plus que désagréable ?",
+                "o1":{
+                    "text":"Faire la queue",
+                    "next":"0"
+                },
+                "o2":{
+                    "text":"Lettre",
+                    "next":"0"
+                },
+                "o3":{
+                    "text":"Rendre sur place",
+                    "next":"0"
+                }
+        }};
+        function apply(st){
+            if (st === "site"){
 
+            }
+            else if (st === "lettre"){
+
+            }
+            else {
+                document.getElementById("titre").innerText=table[st]["titre"];
+                document.getElementById("context").innerText=table[st]["context"];
+                document.getElementById("op1").innerText=table[st]["o1"]["text"];
+                document.getElementById("op2").innerText=table[st]["o2"]["text"];
+                document.getElementById("op3").innerText=table[st]["o3"]["text"];
+            }
+        }
+        function valider(){
+           let sel = document.getElementById("actSel");
+           let opt = null;
+           for (let o = 0; o < sel.options.length; o++) {
+               opt = sel.options[o];
+               if (opt.selected) {
+                   console.log(opt.value);
+                   action = table[action][opt.value]["next"];
+                   apply(action);
+                   break;
+               }
+           }
+        }
+        apply("0");
     </script>
 </body>
 </html>
