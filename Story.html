@@ -11,7 +11,16 @@
             margin-left: 20%;
             margin-right: 20%;
             padding: 10px;
+            background-color: black;
             border: 1px solid;
+        }
+        select{
+            font-family: "Courier New";
+            font-size: 20px;
+        }
+        option{
+            font-size: 20px;
+            font-family: "Courier New";
         }
         .cont{
             text-align: center;
@@ -35,6 +44,16 @@
             width: 300px;
             height: 300px;
         }
+        #context{
+            font-family: "Courier New";
+            font-size: 20px;
+            color:white
+        }
+        #titre{
+            font-family: "Courier New";
+            font-size: 40px;
+            color:white;
+        }
     </style>
 </head>
     <header>
@@ -45,9 +64,6 @@
             Triompherez vous de ce dictat bureaucrate ? Eviterez-vous le burnout ? C'est à vous de jouer.
         </p>
     </header>
-    <div class="cont">
-        <img src="approved-rubber-stamps-vector.jpg" alt="Approved" id="img">
-    </div>
     <main>
         <div class="cont"><h2 id="titre"></h2></div>
         <p id="context"></p>
@@ -58,6 +74,9 @@
                 <option id="op3" value="o3"></option>
             </select>
             <button onclick="valider()">Valider</button>
+        <div id="lettre">
+            <input type="text">
+        </div>
         </div>
     </main>
     <script type="text/javascript">
@@ -65,17 +84,17 @@
         let table = {
             "0" : {
                   "titre" : "Que faire ?",
-                "context" : "C'est bien beau d'avoir de l'ambition, mais maintenant, il faut agir. Vous pouvez toujours essayer de vous rendre sur leur SITE WEB complètement cassé. Autre option, vous pouvez tenter de leur écrire une LETTRE. Sinon, plus radical de vous RENDRE SUR PLACE",
+                "context" : "C'est bien beau d'avoir de l'ambition, mais maintenant, il faut agir. Vous pouvez toujours essayer de vous rendre sur leur SITE WEB complètement cassé. Autre option, vous pouvez tenter de leur écrire une LETTRE. Sinon, plus radical, de vous RENDRE SUR PLACE",
                 "o1":{
-                      "text":"Site web",
+                      "text":"Se rendre sur le site web",
                       "next":"0"
                 },
                 "o2":{
-                    "text":"Lettre",
+                    "text":"Ecrire une lettre",
                     "next":"0"
                 },
                 "o3":{
-                    "text":"Rendre sur place",
+                    "text":"Vous rendre sur place",
                     "next":"1"
                 }},
             "1" : {
@@ -86,14 +105,15 @@
                     "next":"0"
                 },
                 "o2":{
-                    "text":"Lettre",
+                    "text":"Essayer de doubler des gens",
                     "next":"0"
                 },
                 "o3":{
-                    "text":"Rendre sur place",
+                    "text":"Faire demi-tour",
                     "next":"0"
                 }
         }};
+        document.getElementById("lettre").style.display = "none";
         function apply(st){
             if (st === "site"){
 
