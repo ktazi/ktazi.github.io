@@ -40,18 +40,39 @@
             padding: 10px;
             border: 1px solid;
         }
-        #img{
-            width: 300px;
-            height: 300px;
+        #letter{
+            font-family: "Snell Roundhand";
+            font-size: 20px;
+            color:darkblue;
+            background-color: bisque;
+            width: 60%;
+            height:40%;
+            margin:10px;
         }
         #context{
             font-family: "Courier New";
             font-size: 20px;
             color:white
         }
+        #lettre_t{
+            font-family: "Courier New";
+            font-size: 20px;
+            color:white;
+
+        }
         #titre{
             font-family: "Courier New";
             font-size: 40px;
+            color:white;
+        }
+        #burndes{
+            font-family: "Courier New";
+            font-size: 20px;
+            color:white;
+        }
+        #burntit{
+            font-size: 50px;
+            font-family: "Courier New";
             color:white;
         }
     </style>
@@ -65,18 +86,25 @@
         </p>
     </header>
     <main>
-        <div class="cont"><h2 id="titre"></h2></div>
-        <p id="context"></p>
-        <div class="cont">
+        <div class="cont" id="story">
+            <div class="cont"><h2 id="titre"></h2></div>
+            <p id="context"></p>
             <select name="Action" id="actSel">
                 <option id="op1" value="o1"></option>
                 <option id="op2" value="o2"></option>
                 <option id="op3" value="o3"></option>
             </select>
             <button onclick="valider()">Valider</button>
-        <div id="lettre">
-            <input type="text">
         </div>
+        <div class="cont" id="lettre">
+            <p id="lettre_t">Vous vous saisissez de votre plus joli papier d'écriture et entammez la rédaction de votre lettre</p>
+            <textarea id="letter">Sa majesté l'Ambassadeur,</textarea>
+            <button onclick="apply('bVotre lettre ne sera jamais retournée. Il ne vous reste plus qu\'à reprendre le travail');">Envoyer</button>
+        </div>
+        <div class="cont" id="burnout">
+            <p id="burndes"></p>
+            <h2 id="burntit">BURNOUT</h2>
+            <button id="burnbut" onclick="apply('0');">Réessayer</button>
         </div>
     </main>
     <script type="text/javascript">
@@ -87,11 +115,11 @@
                 "context" : "C'est bien beau d'avoir de l'ambition, mais maintenant, il faut agir. Vous pouvez toujours essayer de vous rendre sur leur SITE WEB complètement cassé. Autre option, vous pouvez tenter de leur écrire une LETTRE. Sinon, plus radical, de vous RENDRE SUR PLACE",
                 "o1":{
                       "text":"Se rendre sur le site web",
-                      "next":"0"
+                      "next":"site"
                 },
                 "o2":{
                     "text":"Ecrire une lettre",
-                    "next":"0"
+                    "next":"lettre"
                 },
                 "o3":{
                     "text":"Vous rendre sur place",
@@ -102,26 +130,157 @@
                 "context" : "Vous prenez votre courage à deux mains et décidez de vous rendre sur place. Une fois arrivé devant la porte, un premier obstacle vous fait face : une queue interminable. Que faire en cette situation plus que désagréable ?",
                 "o1":{
                     "text":"Faire la queue",
-                    "next":"0"
+                    "next":"bAprès 43 heure d'attente, vous avez bougé de 5 centimètres. Epuisé, vous abandonnez."
                 },
                 "o2":{
                     "text":"Essayer de doubler des gens",
-                    "next":"0"
+                    "next":"2"
                 },
                 "o3":{
                     "text":"Faire demi-tour",
                     "next":"0"
                 }
-        }};
+            },
+            "2" : {
+                "titre" : "Essayer de doubler",
+                "context" : "\"- Excusez moi ! pardon ! J'ai ma cousine germaine devant !\"\nNon sans peine, vous parvenez à vous frayer un chemin et atteignez la porte de l'établissement. Ici déjà, un premier garde vous fait face. Il vous regarde fixement et semble attendre de vous quelque chose.",
+                "o1":{
+                    "text":"Vous sortez votre passeport",
+                    "next":"3"
+                },
+                "o2":{
+                    "text":"Vous lui faite du baisemain",
+                    "next":"bBien que flatté, le garde vous dis que ces attentions ne sont réservé qu'au grand et illustre Lord Suprème Mousseline.'Vous êtes recalé d'office, pas besoin de vous embetter avec les tâches à l'intérieur'. Dépité, vous sortez de la file et rentrez chez vous "
+                },
+                "o3":{
+                    "text":"Vous lui filez 100 euros",
+                    "next":"4"
+                }
+            },
+            "3" : {
+                "titre" : "Vous sortez votre passeport",
+                "context" : "Le garde saisit votre passeport, l'ouvre à l'envers.\nIl semble être absorbé par la lecture d'une page vide.",
+                "o1":{
+                    "text":"Vous lui expliquez son erreur",
+                    "next":"bLe garde vous dévisage et dit \n'Vous pensez vraiment que je suis débile ? Vous êtes recalé d'office, pas besoin de vous embetter avec les tâches à l'intérieur'. Dépité, vous sortez de la file et rentrez chez vous"
+                },
+                "o2":{
+                    "text":"Vous lui faite du baisemain",
+                    "next":"bBien que flatté, le garde vous dis que ces attentions ne sont réservé qu'au grand et illustre Lord Suprème Mousseline.'Vous êtes recalé d'office, pas besoin de vous embetter avec les tâches à l'intérieur'. Dépité, vous sortez de la file et rentrez chez vous "
+                },
+                "o3":{
+                    "text":"Vous attendez patiemment",
+                    "next":"5"
+                }
+            },
+            "4":{
+                "titre" : "Vous lui filez 100 euros",
+                "context" : "'En temps normal, je vous aurais recalé, mais on est en période de crise.'Le garde prend votre billet et vous fait passer. Entré dans le lobby, il n'y a bien sûr aucune indication. Vous avez devant vous trois voies possibles, une grosse porte blanche, un escalier en colimasson montant à l'étage et un long couloir obscur",
+                "o1":{
+                    "text":"Porte",
+                    "next":"Test"
+                },
+                "o2":{
+                    "text":"Escalier",
+                    "next":"0"
+                },
+                "o3":{
+                    "text":"Couloir",
+                    "next":"0"
+                }
+            },
+            "5":{
+                "titre" : "Vous attendez patiemment",
+                "context" : "Le garde continue à scuter votre passeport à une page qui ne semble pas être votre page d'identité",
+                "o1":{
+                    "text":"Patienter encore",
+                    "next":"b'Il est tout cassé vot passeport, revenez avec des documents plus appropriés que ca'. Sans mot à dire, vos faites machine arrière et rentrez chez vous"
+                },
+                "o2":{
+                    "text":"Lui expliquer son erreur",
+                    "next":"bLe garde vous dévisage et dit \n'Vous pensez vraiment que je suis débile ? Vous êtes recalé d'office, pas besoin de vous embetter avec les tâches à l'intérieur'. Dépité, vous sortez de la file et rentrez chez vous"
+                },
+                "o3":{
+                    "text":"Lui filer 100 euros",
+                    "next":"4"
+                }
+            },
+            "6":{
+                "titre" : "A l'étage",
+                "context" : "",
+                "o1":{
+                    "text":"Porte",
+                    "next":"Test"
+                },
+                "o2":{
+                    "text":"Escalier",
+                    "next":"0"
+                },
+                "o3":{
+                    "text":"Faire machine arrière",
+                    "next":"8"
+                }
+            },
+            "7":{
+                "titre" : "Dans le couloir",
+                "context" : "",
+                "o1":{
+                    "text":"Porte",
+                    "next":"Test"
+                },
+                "o2":{
+                    "text":"Escalier",
+                    "next":"0"
+                },
+                "o3":{
+                    "text":"Faire machine arrière",
+                    "next":"8"
+                }
+            },
+            "8":{
+                "titre" : "Dans le hall",
+                "context" : "",
+                "o1":{
+                    "text":"Porte",
+                    "next":"Test"
+                },
+                "o2":{
+                    "text":"Escalier",
+                    "next":"6"
+                },
+                "o3":{
+                    "text":"Couloir",
+                    "next":"7"
+                }
+            }
+        };
         document.getElementById("lettre").style.display = "none";
+        document.getElementById("burnout").style.display = "none";
         function apply(st){
             if (st === "site"){
-
+                document.getElementById("lettre").style.display = "none";
+                document.getElementById("story").style.display = "block";
+                document.getElementById("titre").innerText=table["0"]["titre"];
+                document.getElementById("context").innerText=table["0"]["context"];
+                document.getElementById("op1").innerText=table["0"]["o1"]["text"];
+                document.getElementById("op2").innerText=table["0"]["o2"]["text"];
+                document.getElementById("op3").innerText=table["0"]["o3"]["text"];
             }
             else if (st === "lettre"){
-
+                document.getElementById("lettre").style.display = "block";
+                document.getElementById("story").style.display = "none";
+            }
+            else if(st[0] === 'b'){
+                document.getElementById("burnout").style.display = "block";
+                document.getElementById("story").style.display = "none";
+                document.getElementById("lettre").style.display = "none";
+                document.getElementById("burndes").innerText = st.substring(1);
+                action= '0';
             }
             else {
+                document.getElementById("lettre").style.display = "none";
+                document.getElementById("burnout").style.display = "none";
+                document.getElementById("story").style.display = "block";
                 document.getElementById("titre").innerText=table[st]["titre"];
                 document.getElementById("context").innerText=table[st]["context"];
                 document.getElementById("op1").innerText=table[st]["o1"]["text"];
