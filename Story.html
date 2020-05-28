@@ -25,6 +25,24 @@
         .cont{
             text-align: center;
         }
+        .cont_q{
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+        .quest{
+            font-family: "Snell Roundhand";
+            font-size: 15px;
+        }
+        .manusc{
+            font-family: "Snell Roundhand";
+            font-size: 15px;
+            color:darkblue;
+            background-color: bisque;
+            padding: 5px;
+        }
         #logo{
             font-family: "Courier New";
             font-size: 50px;
@@ -75,6 +93,25 @@
             font-family: "Courier New";
             color:white;
         }
+        #test{
+            border : solid black 1px;
+            margin-right: 20%;
+            margin-left: 20%;
+            align-content: center;
+            background-color: antiquewhite;
+        }
+        #test_des{
+            font-family: "Courier New";
+            font-size: 30px;
+            color:black;
+        }
+        #test_texte{
+            margin-left: 20%;
+            margin-right: 20%;
+            font-family: "Courier New ";
+            font-size: 20px;
+            color:black;
+        }
     </style>
 </head>
     <header>
@@ -106,7 +143,56 @@
             <h2 id="burntit">BURNOUT</h2>
             <button id="burnbut" onclick="apply('0');">Réessayer</button>
         </div>
+
     </main>
+    <div class="cont" id="test_cont">
+    <h2 id="test_des">Examen écrit pour demandeur de visa</h2>
+    <p id="test_texte">Veuillez répondre aux questions suivantes durant le temps imparti. Elles conditionneront énormément l'obtention de votre visa. Ne répondez qui si vous êtes certains de vous</p>
+    <button id="testbut" onclick="apply('0');">Commencer</button>
+    <form id="questionnaire">
+        <div id="test">
+            <div class="cont_q">
+                <label class="quest" for="name">Noms, Prénoms</label><input type="text" id="name" placeholder="Ecrivez ici" class="manusc">
+            </div>
+            <div class="cont_q">
+                <label class="quest" for="pass" >Votre code de dossier</label><input type="text" id="pass" placeholder="ex. AAAAAAAAAAAA" class="manusc">
+            </div>
+            <div class="cont_q">
+                <label class="quest" for="bd">Date de naissance</label><input type="date" id="bd" class="manusc">
+            </div>
+            <div class="cont_q">
+                <label class="quest" for="mbd">Date de naissance du Lord Supreme Mousseline 12</label><input type="date" id="mbd" class="manusc">
+            </div>
+            <div class="cont">
+                <label class="quest" for="color">Couleur préférée du Lord Supreme Mousseline 12</label> <input type="color" id="color" class="manusc">
+            </div>
+            <div class="cont_q">
+                <p class="quest">Parmi ces propositions, cochez ce que vous appréciez</p>
+                <div><label class="quest" for="prop1">Les andives</label><input type="checkbox" id="prop1"></div>
+                <div><label class="quest" for="prop2">Les sardines</label><input type="checkbox" id="prop2"></div>
+                <div><label class="quest" for="prop3">Les sorbets a la peche</label><input type="checkbox" id="prop3"></div>
+                <div> <label class="quest" for="prop4">Les sorbets a la myrtille</label><input type="checkbox" id="prop4"></div>
+                <div><label class="quest" for="prop5">Les fondues au chocolat</label><input type="checkbox" id="prop5"></div>
+                <div><label class="quest" for="prop6">Les guimauves</label><input type="checkbox" id="prop6"></div>
+                <div><label class="quest" for="prop7">Le caviar</label><input type="checkbox" id="prop7"></div>
+                <div><label class="quest" for="prop8">Les cotes de boeuf</label><input type="checkbox" id="prop8"></div>
+                <div><label class="quest" for="prop9">Les haricots verts</label><input type="checkbox" id="prop9"></div>
+                <div><label class="quest" for="prop10">Le tocacola</label><input type="checkbox" id="prop10"></div>
+                <div><label class="quest" for="prop11">Le moubsi</label><input type="checkbox" id="prop11"></div>
+            </div>
+            <div class="cont_q">
+                <p class="quest">Parmi ces propositions, cochez ce à quoi vous vous identifiez</p>
+                <div><label class="quest" for="prop12">Terroriste</label><input type="checkbox" id="prop12"></div>
+                <div><label class="quest" for="prop13">Black hat</label><input type="checkbox" id="prop13"></div>
+                <div><label class="quest" for="prop14">Criminel</label><input type="checkbox" id="prop14"></div>
+                <div><label class="quest" for="prop15">Fan du lord supreme Mousseline 12</label><input type="checkbox" id="prop15"></div>
+                <div><label class="quest" for="prop16">Admirateur secret du lord supreme Mousseline 12</label><input type="checkbox" id="prop16"></div>
+                <div><label class="quest" for="prop17">Défenseur des """""""droits de l'homme"""""""</label><input type="checkbox" id="prop17"></div>
+            </div>
+        </div>
+    </form>
+    </div>
+
     <script type="text/javascript">
         let action = "0";
         let table = {
@@ -265,6 +351,7 @@
                 document.getElementById("op1").innerText=table["0"]["o1"]["text"];
                 document.getElementById("op2").innerText=table["0"]["o2"]["text"];
                 document.getElementById("op3").innerText=table["0"]["o3"]["text"];
+                action= '0';
             }
             else if (st === "lettre"){
                 document.getElementById("lettre").style.display = "block";
