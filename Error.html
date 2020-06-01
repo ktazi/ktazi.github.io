@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+    <h1>Erreur : XPTJ-202-KLJ-2H3: DNS_issue: 3.1.15.254</h1>
+    <button id="refresh" onclick="refresh()"> Réésayer </button>
+</body>
+<script>
+
+    let nb_error = 0;
+    function refresh(){
+        nb_error++;
+        if (nb_error>3){
+            window.location.href="Ban.html";
+        }
+    }
+</script>
+</html>
