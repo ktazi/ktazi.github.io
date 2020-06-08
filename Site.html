@@ -3,6 +3,7 @@
 <style>
     #page{
         border: 5px solid #019ABB;
+        border-radius: 8px;
     }
     #formulaire{
         display: flex;
@@ -16,11 +17,27 @@
         color: white;
         font-family: cursive;
         text-align: center;
+        text-shadow: 4px 4px black;
     }
     #mid{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        margin: 20px;
+        font-family: cursive;
+    }
+    #moreImportantInformation{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    #importantInformation{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    #fset{
+        font-size: 100%;
     }
     #page{
         display: flex;
@@ -33,13 +50,13 @@
         width: 100px;
     }
     #nationality{
-        width: 100px;
+        width: 110px;
     }
     #birthday{
         width: 130px;
     }
     #religion{
-        width: 100px;
+        width: 250px;
     }
     #sexe{
         width: 100px;
@@ -58,6 +75,16 @@
     }
     #bot{
         background-color: #2DC1E1;
+        display: flex;
+        flex-direction: column;
+        border-top: 5px solid #019ABB;
+        
+    }
+    #help{
+        border: none;
+        width: 110px;
+        background-color: #2DC1E1;
+
     }
 </style>
 <head>
@@ -70,101 +97,143 @@
             <h1 id="title">Questionnaire d'obtention rapide et facile pour la république dictatorial de Onéchyan</h1>
         </div>
         <div id="mid">
+
             <form id="formulaire">
-                <fieldset>
+                <fieldset id="fset">
                     <legend>Information très importante</legend>
-                    <label for="name">Nom : </label><input type="text" id="name" placeholder="Nom" required>
-                    <label for="nickname">Prénom : </label><input type="text" id="nickname" placeholder="Prénom" required>
-                    <label for="nationality">Nationalité : </label><select id="nationality" required>
-                        <option value="Nom1">Nom 1</option>
-                        <option value="Nom2">Nom 2</option>
-                        <option value="Nom3">Nom 3</option>
-                        <option value="Nom4">Nom 4</option>
-                        <option value="Nom5">Nom 5</option>
-                    </select>
-                    <label for="birthday">Date de naissance : </label><input type="date" id="birthday" min="1900-01-01" max="2007-01-01" required>
-                    <label for="religion">Nationalité : </label><select id="religion" required>
-                        <option value="Nom1">Religion 1</option>
-                    </select>
-                    <label for="sexe">Sexe : </label><div id="sexe">
-                        <label for="sexe1">Homme </label><input type="radio" id="sexe1" name="sexe" value="Man">
-                        <label for="sexe2">Femme </label><input type="radio" id="sexe2" name="sexe" value="Woman">
-                        <label for="sexe3">Autre </label><input type="radio" id="sexe3" name="sexe" value="Other">
-                    </div>
-                    <label for="size">Taille (en Mimi Mathy):</label><input type="number" id="size" min="1" max="5" step="0.1">
-                    <label for="size">Poids (en Oz):</label><input type="number" id="weight" min="705" max="8818" step="5">
-                    <label for="hairColor">Quel est le code hexadécimal de la couleur de :</label> <div id="hairColor">
-                        <label for="eyes">Yeux : </label><input type="text" id="eyes" placeholder="000000" required>
-                        <label for="hair">Cheveux : </label><input type="text" id="hair" placeholder="000000" required>
-                        <label for="legs">Poils de jambes : </label><input type="text" id="legs" placeholder="000000" required>
-                    </div>
-                    <label for="flu">Combien de fois avez-vous attraper la grippe ?</label><input type="number" id="flu" min="0">
-                    <label for="conspiracy">Avez-vous, ou un de vos ancêtre, conspiré dans les 1304 dernières années contre notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 ?</label><div id="conspiracy">
-                        <label for="conspiracy1">Oui </label><input type="radio" id="conspiracy1" name="conspiracy" value="Yes">
-                        <label for="conspiracy2">Non </label><input type="radio" id="conspiracy2" name="conspiracy" value="No">
+                    <div id="importantInformation">
+                        <label for="name">Nom : </label><input type="text" id="name" placeholder="Nom" required>
+                        <a><br></a>
+                        <label for="nickname">Prénom : </label><input type="text" id="nickname" placeholder="Prénom" required>
+                        <a><br></a>
+                        <label for="nationality">Nationalité : </label><select id="nationality" required>
+                            <option value="Nom1">Yoloménien</option>
+                            <option value="Nom2">Fachistanais</option>
+                            <option value="Nom3">Péruquien</option>
+                            <option value="Nom4">Capitalistanai</option>
+                            <option value="Nom5">Réptilien</option>
+                        </select>
+                        <a><br></a>
+                        <label for="birthday">Date de naissance : </label><input type="date" id="birthday" min="1900-01-01" max="2007-01-01" required>
+                        <a><br></a>
+                        <label for="religion">Religions : </label><select id="religion" required>
+                            <option value="Nom1">notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12</option>
+                        </select>
+                        <a><br></a>
+                        <label for="sexe">Sexe : </label><div id="sexe">
+                            <label for="sexe1">Homme </label><input type="radio" id="sexe1" name="sexe" value="Man">
+                            <label for="sexe2">Femme </label><input type="radio" id="sexe2" name="sexe" value="Woman">
+                            <label for="sexe3">Autre </label><input type="radio" id="sexe3" name="sexe" value="Other">
+                        </div>
+                        <a><br></a>
+                        <label for="size">Taille (en Mimi Mathy):</label><input type="number" id="size" min="1" max="5" step="0.1">
+                        <a><br></a>
+                        <label for="size">Poids (en Oz):</label><input type="number" id="weight" min="705" max="8818" step="5">
+                        <a><br></a>
+                        <label for="hairColor">Quel est le code hexadécimal de la couleur de :</label> <div id="hairColor">
+                            <label for="eyes">Yeux : </label><input type="text" id="eyes" placeholder="000000" required>
+                            <label for="hair">Cheveux : </label><input type="text" id="hair" placeholder="000000" required>
+                            <label for="legs">Poils de jambes : </label><input type="text" id="legs" placeholder="000000" required>
+                        </div>
+                        <a><br></a>
+                        <label for="flu">Combien de fois avez-vous attraper la grippe ?</label><input type="number" id="flu" min="0">
+                        <a><br></a>
+                        <label for="conspiracy">Avez-vous, ou un de vos ancêtre, conspiré dans les 1304 dernières années contre notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 ?</label><div id="conspiracy">
+                            <label for="conspiracy1">Oui </label><input type="radio" id="conspiracy1" name="conspiracy" value="Yes">
+                            <label for="conspiracy2">Non </label><input type="radio" id="conspiracy2" name="conspiracy" value="No">
+                        </div>
+                        <a><br></a>
                     </div>
                 </fieldset>
                 <fieldset>
-                    <legend>Information</legend>
-                    <label for="interest">Pourquoi notre pays vous intéresse-t-il ? </label><textarea id="interest" rows="7"></textarea>
-                    <label for="zebra">Aimez-vous les zèbres ? </label><div id="zebra">
-                        <label for="zebra1">Oui </label><input type="radio" id="zebra1" name="zebra" value="Yes">
-                        <label for="zebra2">Non </label><input type="radio" id="zebra2" name="zebra" value="No">
-                    </div>
-                    <label for="anthem">Connaissez-vous par cœur notre hymne national ?</label><div id="anthem">
-                        <label for="anthem1">Oui </label><input type="radio" id="anthem1" name="anthem" value="Yes">
-                        <label for="anthem2">Non </label><input type="radio" id="anthem2" name="anthem" value="No">
-                    </div>
-                    <label for="maxwell">Quelle est la première loi de maxwell ?</label><div id="maxwell">
-                        <label for="anthem1">E = mc² </label><input type="radio" id="maxwell1" name="maxwell" value="no">
-                        <label for="anthem2">πR2 </label><input type="radio" id="maxwell2" name="maxwell" value="No">
-                        <label for="anthem2">div(E) = p/E0 </label><input type="radio" id="maxwell3" name="maxwell" value="Yes">
-                        <label for="anthem2">Wψ=−ℏ22md2ψdx2+12mω2x2ψ </label><input type="radio" id="maxwell4" name="maxwell" value="No">
-                    </div>
-                    <label for="street">Avez-vous déjà a volé un panneau dans la rue ?</label><div id="street">
-                        <label for="street1">Oui </label><input type="radio" id="street1" name="street" value="Yes">
-                        <label for="street2">Non </label><input type="radio" id="street2" name="street" value="No">
-                    </div>
-                    <label for="music">Préférez-vous le si dièse ou le do bécare ?</label><div id="music">
-                        <label for="music1">Si dièse </label><input type="radio" id="music1" name="music" value="Si dièse">
-                        <label for="music2">Do bécare </label><input type="radio" id="music2" name="music" value="Do bécare">
-                    </div>
-                    <label for="Bradley/Mousseline">Qui trouvez-vous le plus attirant physiquement : Bradley Pitt ou notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 ?</label><div id="Bradley/Mousseline">
-                        <label for="Bradley/Mousseline1">Bradley Pitt </label><input type="radio" id="Bradley/Mousseline1" name="Bradley/Mousseline" value="Bradley Pitt">
-                        <label for="Bradley/Mousseline2">Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 </label><input type="radio" id="Bradley/Mousseline2" name="Bradley/Mousseline" value="Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12">
-                    </div>
-                    <label for="Elon/Mousseline">Qui trouvez-vous le plus intelligent : Elon Crust ou notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 ?</label><div id="Elon/Mousseline">
-                        <label for="Elon/Mousseline1">Elon Crust </label><input type="radio" id="Elon/Mousseline1" name="Elon/Mousseline" value="Elon Crust">
-                        <label for="Elon/Mousseline2">Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 </label><input type="radio" id="Elon/Mousseline2" name="Elon/Mousseline" value="Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12">
-                    </div>
-                    <label for="pain">Pain au chocolat ou “””””chocolatine””””” ?</label><div id="pain">
-                        <label for="street1">Oui </label><input type="radio" id="pain1" name="pain" value="Yes">
-                        <label for="street2">Non </label><input type="radio" id="pain2" name="pain" value="No">
-                    </div>
-                    <label for="chinese">翁奇揚獨裁共和國是在哪一年建立的 ?</label><div id="chinese">
-                        <label for="anthem1">2050 </label><input type="radio" id="chinese1" name="chinese" value="Yes">
-                        <label for="anthem2">1872 </label><input type="radio" id="chinese2" name="chinese" value="Yes">
-                        <label for="anthem2">Le 4 octobre 1943 à 15h04 </label><input type="radio" id="chinese3" name="chinese" value="Yes">
-                        <label for="anthem2">???... </label><input type="radio" id="chinese4" name="chinese" value="Yes">
-                    </div>
-                    <label for="arab">ما هي المعنى للحياة ؟</label><div id="arab">
-                        <label for="anthem1">ماذا تثرثر علي </label><input type="radio" id="arab1" name="arab" value="Yes">
-                        <label for="anthem2">42 </label><input type="radio" id="arab2" name="arab" value="Yes">
-                        <label for="anthem2">Aled </label><input type="radio" id="arab3" name="arab" value="Yes">
-                        <label for="anthem2">Ne souhaite pas s'exprimer </label><input type="radio" id="arab4" name="arab" value="Yes">
+                    <legend id="fset">Information plus qu'importante</legend>
+                    <div id="moreImportantInformation">
+                        <label for="interest">Pourquoi notre pays vous intéresse-t-il ? </label><textarea id="interest" rows="7"></textarea>
+                        <a><br></a>
+                        <label for="zebra">Aimez-vous les zèbres ? </label><div id="zebra">
+                            <label for="zebra1">Oui </label><input type="radio" id="zebra1" name="zebra" value="Yes">
+                            <label for="zebra2">Non </label><input type="radio" id="zebra2" name="zebra" value="No">
+                        </div>
+                        <a><br></a>
+                        <label for="anthem">Connaissez-vous par cœur notre hymne national ?</label><div id="anthem">
+                            <label for="anthem1">Oui </label><input type="radio" id="anthem1" name="anthem" value="Yes">
+                            <label for="anthem2">Non </label><input type="radio" id="anthem2" name="anthem" value="No">
+                        </div>
+                        <a><br></a>
+                        <label for="maxwell">Quelle est la première loi de maxwell ?</label><div id="maxwell">
+                            <label for="maxwell1">E = mc² </label><input type="radio" id="maxwell1" name="maxwell" value="no">
+                            <label for="maxwell2">πR2 </label><input type="radio" id="maxwell2" name="maxwell" value="No">
+                            <label for="maxwell3">div(E) = p/E0 </label><input type="radio" id="maxwell3" name="maxwell" value="Yes">
+                            <label for="maxwell4">Wψ=−ℏ22md2ψdx2+12mω2x2ψ </label><input type="radio" id="maxwell4" name="maxwell" value="No">
+                        </div>
+                        <a><br></a>
+                        <label for="street">Avez-vous déjà a volé un panneau dans la rue ?</label><div id="street">
+                            <label for="street1">Oui </label><input type="radio" id="street1" name="street" value="Yes">
+                            <label for="street2">Non </label><input type="radio" id="street2" name="street" value="No">
+                        </div>
+                        <a><br></a>
+                        <label for="music">Préférez-vous le si dièse ou le do bécare ?</label><div id="music">
+                            <label for="music1">Si dièse </label><input type="radio" id="music1" name="music" value="Si dièse">
+                            <label for="music2">Do bécare </label><input type="radio" id="music2" name="music" value="Do bécare">
+                        </div>
+                        <a><br></a>
+                        <label for="Bradley/Mousseline">Qui trouvez-vous le plus attirant physiquement : Bradley Pitt ou notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 ?</label><div id="Bradley/Mousseline">
+                            <label for="Bradley/Mousseline1">Bradley Pitt </label><input type="radio" id="Bradley/Mousseline1" name="Bradley/Mousseline" value="Bradley Pitt">
+                            <label for="Bradley/Mousseline2">Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 </label><input type="radio" id="Bradley/Mousseline2" name="Bradley/Mousseline" value="Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12">
+                        </div>
+                        <a><br></a>
+                        <label for="Elon/Mousseline">Qui trouvez-vous le plus intelligent : Elon Crust ou notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 ?</label><div id="Elon/Mousseline">
+                            <label for="Elon/Mousseline1">Elon Crust </label><input type="radio" id="Elon/Mousseline1" name="Elon/Mousseline" value="Elon Crust">
+                            <label for="Elon/Mousseline2">Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 </label><input type="radio" id="Elon/Mousseline2" name="Elon/Mousseline" value="Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12">
+                        </div>
+                        <a><br></a>
+                        <label for="pain">Pain au chocolat ou “””””chocolatine””””” ?</label><div id="Bread">
+                            <label for="Bread1">Pain au chocolat</label><input type="radio" id="Bread1" name="pain" value="Yes">
+                            <label for="Bread2">Chocolatine </label><input type="radio" id="Bread2" name="pain" value="No">
+                        </div>
+                        <a><br></a>
+                        <label for="chinese">翁奇揚獨裁共和國是在哪一年建立的 ?</label><div id="chinese">
+                            <label for="chinese1">2050 </label><input type="radio" id="chinese1" name="chinese" value="Yes">
+                            <label for="chinese2">1872 </label><input type="radio" id="chinese2" name="chinese" value="Yes">
+                            <label for="chinese3">Le 4 octobre 1943 à 15h04 </label><input type="radio" id="chinese3" name="chinese" value="Yes">
+                            <label for="chinese4">???... </label><input type="radio" id="chinese4" name="chinese" value="Yes">
+                        </div>
+                        <a><br></a>
+                        <label for="arab">ما هي المعنى للحياة ؟</label><div id="arab">
+                            <label for="arab1">ماذا تثرثر علي </label><input type="radio" id="arab1" name="arab" value="Yes">
+                            <label for="arab2">42 </label><input type="radio" id="arab2" name="arab" value="Yes">
+                            <label for="arab3">Aled </label><input type="radio" id="arab3" name="arab" value="Yes">
+                            <label for="arab4">Ne souhaite pas s'exprimer </label><input type="radio" id="arab4" name="arab" value="Yes">
+                        </div>
                     </div>
                 </fieldset>
-                <input type="submit" value="Obtenir rapidement et facilement mon visa">
+                <button id="submit" >Obtenir rapidement et facilement mon VISA</button>
             </form>
         </div>
         <div id="bot">
             <button id="help">Besoin d'aide ?</button>
-            <a href="Error.html">Condition générales d'utilisations</a>
-            <a href="Error.html">Autre option</a>
-            <a href="Error.html">Autre option</a>
-            <a href="Error.html">Autre option</a>
+            <a href="Error.html">  Condition générales d'utilisations</a>
+            <a href="Error.html">  Accord tacite de non droit de penser</a>
+            <a href="Error.html">  Commande uber eat</a>
+            <a href="Error.html">  Autre option</a>
         </div>
     </div>
+    <script>
+        let submitBut = document.querySelector("#submit");
+        submitBut.addEventListener('click', submit)
+        function submit(){
+            let date = new Date(document.getElementById("birthday").value);
+            let today = new Date();
+            let vic = document.getElementById("nationality").value !== "Nom5" &&
+                (today.getFullYear() - date.getFullYear())/document.getElementById("flu").value < 1 &&
+                document.getElementById("zebra").value === "zebra1" &&
+                document.getElementById("anthem").value === "anthem1" &&
+                document.getElementById("street").value === "street2" &&
+                document.getElementById("Bradley/Mousseline").value === "Bradley/Mousseline2" &&
+                document.getElementById("Elon/Mousseline").value === "Elon/Mousseline2" &&
+                document.getElementById("Bread").value === "Bread1";
+            console.log(vic);
+        }
+    </script>
 </body>
-<script></script>
 </html>
