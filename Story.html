@@ -13,6 +13,7 @@
             padding: 10px;
             background-color: black;
             border: 1px solid;
+            height: 800px;
         }
         select{
             font-family: "Courier New";
@@ -24,6 +25,8 @@
         }
         .cont{
             text-align: center;
+            margin-bottom: auto;
+            margin-top: auto;
         }
         .cont_q{
             display: flex;
@@ -49,13 +52,21 @@
             color: white;
             font-family: "Courier New";
             font-size: 15px;
+            margin-bottom: 5px;
+            margin-top: 5px;
         }
         .int_b:hover {
             background-color: white;
             border: 1px solid black;
             color: black;
+            margin-bottom: 5px;
+            margin-top: 5px;
             font-family: "Courier New";
             font-size: 15px;
+        }
+        #story{
+            margin-top: auto;
+            margin-bottom: auto;
         }
         #logo{
             font-family: "Courier New";
@@ -137,8 +148,6 @@
         }
         #dialogue{
             margin: 3% 20%;
-            padding-right: 10px;
-            padding-left: 10px;
             border:solid white 1px;
         }
         #nom{
@@ -149,8 +158,51 @@
             padding-right: 10px;
             padding-left: 10px;
         }
+        #dialogue2{
+            margin: 3% 20%;
+            border:solid white 1px;
+        }
+        #nom2{
+            position : absolute;
+            margin-top: -10px;
+            margin-left: 5px;
+            background-color: black;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
         #inter_titre{
             font-size: 35px;
+        }
+        #inventory{
+            border : solid black 1px;
+            margin-right: 20%;
+            margin-left: 20%;
+            align-content: center;
+            background-color: white;
+            color:black;
+            font-family: "Courier New";
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        #site{
+            font-family: "Courier New";
+            color : white;
+        }
+        #amba{
+            font-family: "Courier New";
+            color : white;
+        }
+        #di{
+            color :black;
+            font-family: "Courier New";
+            margin-right: 20%;
+            margin-left: 20%;
+        }
+        #congrats{
+            font-family: "Courier New";
+            margin-right: 20%;
+            margin-left: 20%;
         }
     </style>
 </head>
@@ -162,64 +214,86 @@
             Triompherez vous de ce dictat bureaucrate ? Eviterez-vous le burnout ? C'est à vous de jouer.
         </p>
     </header>
-    <main>
+    <div id="inventory" class="cont">
+        <table class="cont">
+         <h2>Inventaire</h2>
+         <tr id="inv">
+            <th>
+                Vos objets :
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Budget :
+            </th>
+            <td id="money">
+                100 euros
+             </td>
+            </tr>
+        </table>
+    </div>
+    <main id="main">
         <div class="cont" id="story">
             <div class="cont"><h2 id="titre"></h2></div>
             <p id="context"></p>
-            <select name="Action" id="actSel">
-                <option id="op1" value="o1"></option>
-                <option id="op2" value="o2"></option>
-                <option id="op3" value="o3"></option>
-            </select>
-            <button onclick="valider()">Valider</button>
+            <div>
+                <select name="Action" id="actSel">
+                    <option id="op1" value="o1"></option>
+                    <option id="op2" value="o2"></option>
+                    <option id="op3" value="o3"></option>
+                </select>
+            </div>
+            <button class = "int_b" onclick="valider()">Valider</button>
+        </div>
+        <div id = "site" class="cont">
+            <p>Voici le site de l'ambassade : </p>
+            <a href="Site.html">www.ambassadeDeOnechyan.oy</a>
+            <button  class = "int_b" onclick="apply('0')">Fermer son ordinateur</button>
         </div>
         <div class="cont" id="lettre">
             <p id="lettre_t">Vous vous saisissez de votre plus joli papier d'écriture et entammez la rédaction de votre lettre</p>
             <textarea id="letter">Sa majesté l'Ambassadeur,</textarea>
-            <button onclick="apply('bVotre lettre ne sera jamais retournée. Il ne vous reste plus qu\'à reprendre le travail');">Envoyer</button>
+            <div><button class="int_b" onclick="apply('bVotre lettre ne sera jamais retournée. Il ne vous reste plus qu\'à reprendre le travail');">Envoyer</button></div>
         </div>
         <div class="cont" id="burnout">
             <p id="burndes"></p>
             <h2 id="burntit">BURNOUT</h2>
-            <button id="burnbut" onclick="apply('0');">Réessayer</button>
+            <button id="burnbut" class="int_b" onclick="apply('0');">Réessayer</button>
+        </div>
+        <div id="inter" class="cont">
+            <h2 id="inter_titre">Interaction avec l'employé</h2>
+            <p id="fonc_des">Description</p>
+            <div>
+                <button class="int_b" onclick="cons()">Demander conseil</button>
+                <button class="int_b" onclick="formu()">Signer le formulaire</button>
+                <button class="int_b" onclick="gossip()">Demander les derniers potins</button>
+            </div>
+            <button class="int_b" onclick="go_away()">Saluer et sortir</button>
+            <div id="dialogue">
+                <h3 id="nom">Nom</h3>
+                <p id="bulle">Blablablabla</p>
+            </div>
+        </div>
+        <div id="amba" class="cont">
+            <h1>Interaction avec l'ambassadeur</h1>
+            <div id="dialogue2">
+                <h3 id="nom2">Ambassadeur de Onéchyan</h3>
+                <p id="bulle2">Donnez moi vos formulaires et dans l'ordre s'il vous plait.</p>
+            </div>
+            <p id="final_sub">Jusqu'ici, vous avez rendu : </p>
+            <div>
+                <p><em>Vous vous munissez du formulaire </em></p>
+                <select name="Formulaires" id="formsel"></select>
+            </div>
+            <button class="int_b" onclick="sub(document.getElementById('formsel').value)" >Lui tendre le formulaire</button>
+            <button class="int_b" onclick="apply('bVous sortez, défait de vous être retrouvé désarmé face à temps de complexité administrative. Prochain arrêt : le boulot.');">Abandonner</button>
         </div>
     </main>
-    <div id="inventory">
-        <table>
-            <tr id="inv">
-                <th>
-                    Vos objets :
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    Votre budget :
-                </th>
-                <td id="money">
-                    100 euros
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="inter" class="cont">
-        <h2 id="inter_titre">Interaction avec l'employé</h2>
-        <p id="fonc_des">Description</p>
-        <div>
-            <button class="int_b" onclick="cons()">Demander conseil</button>
-            <button class="int_b" onclick="formu()">Signer le formulaire</button>
-            <button class="int_b" onclick="gossip()">Demander les derniers potins</button>
-        </div>
-        <button class="int_b" onclick="go_away()">Saluer et sortir</button>
-        <div id="dialogue">
-            <h3 id="nom">Nom</h3>
-            <p id="bulle">Blablablabla</p>
-        </div>
-
-    </div>
-    <div class="cont" id="test_cont">
+<div class="cont" id="test_cont">
     <h2 id="test_des">Examen écrit pour demandeur de visa</h2>
+    <p id="di">Ambassadeur : Parfait, vos papiers sont en ordre. Derniere étape pour avoir votre visa, un petit test écrit. Tiens, vous paraissez surpris ? C'est une procédure <em>absolument obligatoire</em> et de la plus haute importance. Bon courage à vous.</p>
     <p id="test_texte">Veuillez répondre aux questions suivantes durant le temps imparti. Elles conditionneront énormément l'obtention de votre visa. Ne répondez qui si vous êtes certains de vous</p>
-    <button id="testbut" onclick="apply('0');">Commencer</button>
+    <button id="testbut" onclick="beginTest()">Commencer</button>
     <form id="questionnaire">
         <div id="test">
             <div class="cont_q">
@@ -262,12 +336,19 @@
             </div>
         </div>
     </form>
-    </div>
-
+</div>
+<div id = "congrats" class="cont">
+    <p>L'ambassadeur jette un coup d'oeil sur votre test, vous regarde ébahi. 'C'est la premiere fois, dans toute ma carrière, que quelqu'un y arrive du premier coup comme vous. Vous êtes sur que vous ne venez pas d'une dimension parallèle ?' Sur quoi, il prend votre passeport et y appose un visa. Le lendemain, vous êtes à bord d'un avion en direction de Onéchyan, songeant qu'en ce moment, vous pourriez être enterré sous le travail.</p>
+    <h1>Vous avez échappé au blackout !</h1>
+    <img src="approved-rubber-stamps-vector.jpg" alt="approved">
+</div>
     <script type="text/javascript">
         let action = "0";
-        let budget = 100;
         let emp = "blanc";
+        let inv = [];
+        let resp = [];
+        let ans = ["jaune","blanc","orange","noir","noir","bleu"];
+        let fo = true;
         /*document.getElementById("test_cont").style.display = "none";*/
         let table = {
             "0" : {
@@ -275,7 +356,7 @@
                 "context" : "C'est bien beau d'avoir de l'ambition, mais maintenant, il faut agir. Vous pouvez toujours essayer de vous rendre sur leur SITE WEB complètement cassé. Autre option, vous pouvez tenter de leur écrire une LETTRE. Sinon, plus radical, de vous RENDRE SUR PLACE",
                 "o1":{
                       "text":"Se rendre sur le site web",
-                      "next":"cjaune"
+                      "next":"test"
                 },
                 "o2":{
                     "text":"Ecrire une lettre",
@@ -566,7 +647,7 @@
                 },
                 "o2":{
                     "text":"Toquer et entrer dans le bureau de l'ambassadeur",
-                    "next":"7C"
+                    "next":"amba"
                 },
                 "o3":{
                     "text":"Revenir dans le hall",
@@ -591,7 +672,7 @@
             },
             "jaune":{
                 "nom" : "Mario Giallo",
-                "desc" : "Un employé qui a la quarantaine vous fait face. Ses cheveux commencent à devenir gris et il porte un vieux costume gris. Il a l'air fatigué, excédé et semble vouloir rentrer chez lui.",
+                "desc" : "Un employé qui a la quarantaine vous fait face. Ses cheveux commencent blanchir et il porte un vieux costume gris. Il a l'air fatigué, excédé et semble vouloir rentrer chez lui.",
                 "form" : "jaune",
                 "base" : "Faites vite, j'ai d'autres choses à faire",
                 "gos" : "Vous ne pouvez pas faire confiance à tout le monde ici pour sûr, mais moi, je ne vous ferai jamais défaut",
@@ -644,41 +725,67 @@
         document.getElementById("burnout").style.display = "none";
         document.getElementById("inter").style.display = "none";
         document.getElementById("test_cont").style.display = "none";
+        document.getElementById("congrats").style.display = "none";
+
         function apply(st){
             if (st === "site"){
                 document.getElementById("lettre").style.display = "none";
                 document.getElementById("inter").style.display = "none";
                 document.getElementById("test_cont").style.display = "none";
-                document.getElementById("story").style.display = "block";
-                document.getElementById("titre").innerText=table["0"]["titre"];
-                document.getElementById("context").innerText=table["0"]["context"];
-                document.getElementById("op1").innerText=table["0"]["o1"]["text"];
-                document.getElementById("op2").innerText=table["0"]["o2"]["text"];
-                document.getElementById("op3").innerText=table["0"]["o3"]["text"];
-                action= '0';
+                document.getElementById("story").style.display = "none";
+                document.getElementById("site").style.display = "block";
+                document.getElementById("amba").style.display = "none";
+                action = '0';
             }
             else if (st === "lettre"){
                 document.getElementById("lettre").style.display = "block";
+                document.getElementById("site").style.display = "none";
                 document.getElementById("story").style.display = "none";
                 document.getElementById("inter").style.display = "none";
                 document.getElementById("test_cont").style.display = "none";
+                document.getElementById("amba").style.display = "block";
+                document.getElementById("amba").style.display = "none";
 
             }
+            else if (st === "amba"){
+                document.getElementById("lettre").style.display = "none";
+                document.getElementById("site").style.display = "none";
+                document.getElementById("story").style.display = "none";
+                document.getElementById("inter").style.display = "none";
+                document.getElementById("test_cont").style.display = "none";
+                document.getElementById("amba").style.display = "block";
+            }
+            else if (st === "test"){
+                document.getElementById("test_cont").style.display = "block";
+                document.getElementById("main").style.display = "none";
+                document.getElementById("questionnaire").style.display = "none";
+            }
             else if(st[0] === 'b'){
+                for(let i = 0; i < resp.length; i++)
+                    resp.pop();
+                clear_select();
+                clear_inv();
+                document.getElementById("final_sub").innerText = "Jusqu'ici, vous avez rendu : ";
+                document.getElementById("letter").textContent = "Sa majesté l'Ambassadeur,";
                 document.getElementById("burnout").style.display = "block";
                 document.getElementById("story").style.display = "none";
+                document.getElementById("site").style.display = "none";
                 document.getElementById("lettre").style.display = "none";
                 document.getElementById("inter").style.display = "none";
                 document.getElementById("test_cont").style.display = "none";
                 document.getElementById("burndes").innerText = st.substring(1);
+                document.getElementById("money").innerText = "100 euros";
+                document.getElementById("amba").style.display = "none";
                 action= '0';
             }
             else if(st[0] === 'c'){
-                document.getElementById("burnout").style.display = "none";
+;                document.getElementById("burnout").style.display = "none";
+                document.getElementById("site").style.display = "none";
                 document.getElementById("story").style.display = "none";
                 document.getElementById("lettre").style.display = "none";
                 document.getElementById("test_cont").style.display = "none";
                 document.getElementById("inter").style.display = "block";
+                document.getElementById("amba").style.display = "none";
                 document.getElementById("fonc_des").innerText = table[st.substring(1)]["desc"];
                 document.getElementById("nom").innerText = table[st.substring(1)]["nom"];
                 document.getElementById("bulle").innerText = table[st.substring(1)]["base"];
@@ -690,12 +797,17 @@
                 document.getElementById("burnout").style.display = "none";
                 document.getElementById("test_cont").style.display = "none";
                 document.getElementById("inter").style.display = "none";
+                document.getElementById("site").style.display = "none";
+                document.getElementById("amba").style.display = "none";
                 document.getElementById("story").style.display = "block";
                 document.getElementById("titre").innerText=table[st]["titre"];
                 document.getElementById("context").innerText=table[st]["context"];
                 document.getElementById("op1").innerText=table[st]["o1"]["text"];
                 document.getElementById("op2").innerText=table[st]["o2"]["text"];
                 document.getElementById("op3").innerText=table[st]["o3"]["text"];
+                if(st === "4"){
+                    document.getElementById("money").innerText = "0 euros";
+                }
             }
         }
         function valider(){
@@ -704,10 +816,8 @@
            for (let o = 0; o < sel.options.length; o++) {
                opt = sel.options[o];
                if (opt.selected) {
-                   console.log(opt.value);
                    action = table[action][opt.value]["next"];
                    apply(action);
-                   break;
                }
            }
         }
@@ -717,6 +827,25 @@
         function gossip(){
             document.getElementById("bulle").innerText = table[emp]["gos"];
         }
+        function sub(form){
+            if (fo){
+                if(ans[resp.length] === form){
+                    document.getElementById("bulle2").innerText = "Très bien. [tamponne] Donnez moi le suivant.";
+                    resp.push(form);
+                    let text = document.getElementById("final_sub").innerText + " "+ form+ " ";
+                    document.getElementById("final_sub").innerText = text;
+                    if(ans.length === resp.length){
+                        apply("test");
+                    }
+                }
+                else{
+                    apply("bAmbassadeur : 'non ce n'est pas le bon document à me donner. Disparaissez de ma vue, j'ai mieux a faire.' Dépité, vous rentrez chez vous. Prochain arrêt : le boulot.");
+                    for(let i = 0; i < resp.length; i++)
+                        resp.pop();
+                    document.getElementById("final_sub").innerText = "Jusqu'ici, vous avez rendu : ";
+                }
+            }
+        }
         function formu(){
             document.getElementById("bulle").innerText = table[emp]["sig"];
             if(document.getElementById(emp) === null){
@@ -725,12 +854,83 @@
                 cell.innerText = "formulaire " + emp;
                 cell.setAttribute("id",emp);
                 tab.appendChild(cell);
+                inv.push(emp);
+                let sel = document.getElementById("formsel");
+                let opt = document.createElement("option");
+                opt.value=emp;
+                opt.id=emp;
+                opt.innerText=emp;
+                sel.appendChild(opt);
             }
         }
         function go_away(){
             apply(action);
         }
-
+        function clear_select(){
+            let sel = document.getElementById("formsel");
+            let child = sel.lastElementChild;
+            while(child){
+                sel.removeChild(child);
+                child = sel.lastElementChild;
+            }
+        }
+        function clear_inv(){
+            let tab = document.getElementById("inv");
+            let child = tab.lastElementChild;
+            while(child && child !== tab.firstElementChild){
+                tab.removeChild(child);
+                child = tab.lastElementChild;
+            }
+        }
+        let timer = 240;
+        let int1 = null;
+        let int2 = null;
+        function update_button(){
+            document.getElementById("testbut").innerText = "Finir le test " + timer;
+            timer = timer - 1;
+            console.log("a");
+        }
+        function finish_test(){
+            clearInterval(int1);
+            clearInterval(int2);
+            if(!checkResults()){
+                document.getElementById("main").style.display="block";
+                document.getElementById("testbut").setAttribute("onclick", "beginTest()");
+                document.getElementById("testbut").innerText = "Commencer";
+                apply("b'Je peux vous le dire de suite, dit l'ambassadeur, vous etes recalé. Je vois d'ici une mauvaise réponse. Il faut faire un sans faute, sans quoi je ne peux pas vous donner de visa.' Dépité et fatigué, vous rentrez chez vous. Vous vous écroulez.")
+            }
+            else{
+                document.getElementById("congrats").style.display = "block";
+                document.getElementById("test_cont").style.display = "none";
+            }
+        }
+        function beginTest(){
+            document.getElementById("test").style.display = "block";
+            document.getElementById("testbut").setAttribute("onclick", "finish_test()");
+            int1 = setInterval(update_button,1000);
+            int2 = setInterval(finish_test, 240000);
+            document.getElementById("questionnaire").style.display = "block";
+        }
+        function checkResults(){
+            console.log( document.getElementById("mbd").value);
+            return document.getElementById("pass").value === "A33R5FSD3" &&
+                    document.getElementById("color").value === "#4169e1" &&
+                    !document.getElementById("prop1").checked &&
+                    !document.getElementById("prop2").checked &&
+                    !document.getElementById("prop3").checked &&
+                    !document.getElementById("prop6").checked &&
+                    document.getElementById("prop7").checked &&
+                    !document.getElementById("prop8").checked &&
+                    !document.getElementById("prop9").checked &&
+                    !document.getElementById("prop10").checked &&
+                    document.getElementById("prop11").checked &&
+                    !document.getElementById("prop12").checked &&
+                    !document.getElementById("prop14").checked &&
+                    document.getElementById("prop15").checked &&
+                    document.getElementById("prop16").checked &&
+                    document.getElementById("mbd").value === "1965-01-31"&&
+                    !document.getElementById("prop17").checked;
+        }
         apply("0");
     </script>
 </body>
