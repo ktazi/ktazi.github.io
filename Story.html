@@ -43,6 +43,20 @@
             background-color: bisque;
             padding: 5px;
         }
+        .int_b{
+            background-color: black;
+            border: 1px solid black;
+            color: white;
+            font-family: "Courier New";
+            font-size: 15px;
+        }
+        .int_b:hover {
+            background-color: white;
+            border: 1px solid black;
+            color: black;
+            font-family: "Courier New";
+            font-size: 15px;
+        }
         #logo{
             font-family: "Courier New";
             font-size: 50px;
@@ -112,6 +126,32 @@
             font-size: 20px;
             color:black;
         }
+        #inter{
+            border : solid black 1px;
+            margin-right: 20%;
+            margin-left: 20%;
+            align-content: center;
+            background-color: black;
+            color:white;
+            font-family: "Courier New";
+        }
+        #dialogue{
+            margin: 3% 20%;
+            padding-right: 10px;
+            padding-left: 10px;
+            border:solid white 1px;
+        }
+        #nom{
+            position : absolute;
+            margin-top: -10px;
+            margin-left: 5px;
+            background-color: black;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        #inter_titre{
+            font-size: 35px;
+        }
     </style>
 </head>
     <header>
@@ -143,8 +183,39 @@
             <h2 id="burntit">BURNOUT</h2>
             <button id="burnbut" onclick="apply('0');">Réessayer</button>
         </div>
-
     </main>
+    <div id="inventory">
+        <table>
+            <tr id="inv">
+                <th>
+                    Vos objets :
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Votre budget :
+                </th>
+                <td id="money">
+                    100 euros
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="inter" class="cont">
+        <h2 id="inter_titre">Interaction avec l'employé</h2>
+        <p id="fonc_des">Description</p>
+        <div>
+            <button class="int_b" onclick="cons()">Demander conseil</button>
+            <button class="int_b" onclick="formu()">Signer le formulaire</button>
+            <button class="int_b" onclick="gossip()">Demander les derniers potins</button>
+        </div>
+        <button class="int_b" onclick="go_away()">Saluer et sortir</button>
+        <div id="dialogue">
+            <h3 id="nom">Nom</h3>
+            <p id="bulle">Blablablabla</p>
+        </div>
+
+    </div>
     <div class="cont" id="test_cont">
     <h2 id="test_des">Examen écrit pour demandeur de visa</h2>
     <p id="test_texte">Veuillez répondre aux questions suivantes durant le temps imparti. Elles conditionneront énormément l'obtention de votre visa. Ne répondez qui si vous êtes certains de vous</p>
@@ -177,7 +248,7 @@
                 <div><label class="quest" for="prop7">Le caviar</label><input type="checkbox" id="prop7"></div>
                 <div><label class="quest" for="prop8">Les cotes de boeuf</label><input type="checkbox" id="prop8"></div>
                 <div><label class="quest" for="prop9">Les haricots verts</label><input type="checkbox" id="prop9"></div>
-                <div><label class="quest" for="prop10">Le tocacola</label><input type="checkbox" id="prop10"></div>
+                <div><label class="quest" for="prop10">Le lovacola</label><input type="checkbox" id="prop10"></div>
                 <div><label class="quest" for="prop11">Le moubsi</label><input type="checkbox" id="prop11"></div>
             </div>
             <div class="cont_q">
@@ -195,13 +266,16 @@
 
     <script type="text/javascript">
         let action = "0";
+        let budget = 100;
+        let emp = "blanc";
+        /*document.getElementById("test_cont").style.display = "none";*/
         let table = {
             "0" : {
                   "titre" : "Que faire ?",
                 "context" : "C'est bien beau d'avoir de l'ambition, mais maintenant, il faut agir. Vous pouvez toujours essayer de vous rendre sur leur SITE WEB complètement cassé. Autre option, vous pouvez tenter de leur écrire une LETTRE. Sinon, plus radical, de vous RENDRE SUR PLACE",
                 "o1":{
                       "text":"Se rendre sur le site web",
-                      "next":"site"
+                      "next":"cjaune"
                 },
                 "o2":{
                     "text":"Ecrire une lettre",
@@ -261,18 +335,50 @@
             },
             "4":{
                 "titre" : "Vous lui filez 100 euros",
-                "context" : "'En temps normal, je vous aurais recalé, mais on est en période de crise.'Le garde prend votre billet et vous fait passer. Entré dans le lobby, il n'y a bien sûr aucune indication. Vous avez devant vous trois voies possibles, une grosse porte blanche, un escalier en colimasson montant à l'étage et un long couloir obscur",
+                "context" : "'En temps normal, je vous aurais recalé, mais on est en période de crise.'Le garde prend votre billet et vous fait passer. Entré dans le lobby, il n'y a bien sûr aucune indication. Vous avez devant vous trois voies possibles, une grosse porte en bois orange, un escalier en colimasson montant à l'étage et un long couloir obscur",
                 "o1":{
                     "text":"Porte",
-                    "next":"Test"
+                    "next":"4A"
                 },
                 "o2":{
                     "text":"Escalier",
-                    "next":"0"
+                    "next":"6"
                 },
                 "o3":{
                     "text":"Couloir",
-                    "next":"0"
+                    "next":"7"
+                }
+            },
+            "4A":{
+                "titre" : "la porte orange",
+                "context" : "Vous poussez la porte. Un employé, à l'air peureux, vous demande 'Formulaire 4ID04LD3-orange-34 ?'",
+                "o1":{
+                    "text":"Aller lui parler",
+                    "next":"corange"
+                },
+                "o2":{
+                    "text":"Euh le quoi ?",
+                    "next":"4A2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"8"
+                }
+            },
+            "4A2":{
+                "titre" : "le formulaire 4ID04LD3-orange-34",
+                "context" : "'V-vous etes arrivé jusqu'ici sans savoir ? Oh b-bon sang vous etes cuit... Juste un des 5 formulaire d-dont vous avez besoin pour vos démarches... J-je peux pas vous en d-d-dire plus...'",
+                "o1":{
+                    "text":"Le remercier pour les clarifications et lui parler",
+                    "next":"corange"
+                },
+                "o2":{
+                    "text":"Je comprends rien ?",
+                    "next":"4A2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"8"
                 }
             },
             "5":{
@@ -293,42 +399,186 @@
             },
             "6":{
                 "titre" : "A l'étage",
-                "context" : "",
+                "context" : "Vous êtes à présent à l'étage. En face de vous, deux portes, avec les inscription B2RF345R-jaune-90, 2EG5GEERFR-blanc-6. Vous ...",
                 "o1":{
-                    "text":"Porte",
-                    "next":"Test"
+                    "text":"Redescendez",
+                    "next":"8"
                 },
                 "o2":{
-                    "text":"Escalier",
-                    "next":"0"
+                    "text":"Allez vers la porte B2RF345R-jaune-90",
+                    "next":"6A"
                 },
                 "o3":{
-                    "text":"Faire machine arrière",
-                    "next":"8"
+                    "text":"Allez vers la porte 2EG5GEERFR-blanc-6",
+                    "next":"6B"
+                }
+            },
+            "6A":{
+                "titre" : "la salle B2RF345R-jaune-90",
+                "context" : "Un employé, à l'air blasé, vous dit 'Formulaire B2RF345R-jaune-90 ?'",
+                "o1":{
+                    "text":"Aller lui parler",
+                    "next":"cjaune"
+                },
+                "o2":{
+                    "text":"Euh le quoi ?",
+                    "next":"6A2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"6"
+                }
+            },
+            "6A2":{
+                "titre" : "le formulaire B2RF345R-jaune-90",
+                "context" : "'C'est un des formulaires les plus importants pour toute demande administrative. 5 pages de paperasse sur du papier jaune. Pas plus complexe que ça.'",
+                "o1":{
+                    "text":"Le remercier pour les clarifications et lui parler",
+                    "next":"cjaune"
+                },
+                "o2":{
+                    "text":"J'ai pas compris le quoi ?",
+                    "next":"6A2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"6"
+                }
+            },
+            "6B":{
+                "titre" : "la salle 2EG5GEERFR-blanc-6",
+                "context" : "Un employé, à l'air enjoué, vous dit 'Formulaire 2EG5GEERFR-blanc-6 ?'",
+                "o1":{
+                    "text":"Oui s'il vous plait !",
+                    "next":"cblanc"
+                },
+                "o2":{
+                    "text":"Euh le quoi ?",
+                    "next":"6B2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"6"
+                }
+            },
+            "6B2":{
+                "titre" : "le formulaire 2EG5GEERFR-blanc-6",
+                "context" : "Ah ! c'est un des 5 formulaires à remplir pour finaliser une demande de visa ! absolument obligatoire pour espérer aller gouter au paradis. Le blanc, c'est juste une décharge de responsabilité. Vous savez, le Lord Suprème n'aime pas trop les problèmes diplomatiques alors ... Ouf j'en ai peut etre trop dit. Besoin d'autre chose ?'",
+                "o1":{
+                    "text":"Oui s'il vous plait !",
+                    "next":"cblanc"
+                },
+                "o2":{
+                    "text":"J'ai toujours pas compris ?",
+                    "next":"6B2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"6"
                 }
             },
             "7":{
                 "titre" : "Dans le couloir",
-                "context" : "",
+                "context" : "Vous entrez dans un long et étroit couloir. Les murs sont d'un blanc sale, méritant une bonne couche de peinture. Après 5 minutes, vous arrivez au milieu du couloir. Vous avez une porte à votre droite et une à votre gauche.",
                 "o1":{
-                    "text":"Porte",
-                    "next":"Test"
+                    "text":"Porte 43GTYH35HY-bleu-1",
+                    "next":"7A"
                 },
                 "o2":{
-                    "text":"Escalier",
-                    "next":"0"
+                    "text":"Porte 653DE49DJS-noir-03",
+                    "next":"7B"
                 },
                 "o3":{
-                    "text":"Faire machine arrière",
+                    "text":"Aller plus loin",
+                    "next":"7C"
+                }
+            },
+            "7A":{
+                "titre" : "la salle 43GTYH35HY-bleu-1",
+                "context" : "Un employé, à l'air triste, vous dit 'Formulaire 43GTYH35HY-bleu-1 ?'",
+                "o1":{
+                    "text":"Aller lui parler",
+                    "next":"cbleu"
+                },
+                "o2":{
+                    "text":"Euh le quoi ?",
+                    "next":"7A2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"8"
+                }
+            },
+            "7A2":{
+                "titre" : "le formulaire 43GTYH35HY-bleu-1",
+                "context" : "'Voui... C'est juste un questionnaire de personnalité... La base pour obtenir son visa... Vous savez, quoi ...'",
+                "o1":{
+                    "text":"Le remercier et lui demander des détails",
+                    "next":"cbleu"
+                },
+                "o2":{
+                    "text":"J'ai toujours pas compris ?",
+                    "next":"7B2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"8"
+                }
+            },
+            "7B":{
+                "titre" : "la salle 653DE49DJS-noir-03",
+                "context" : "Un employé, à l'air sérieux, vous demande 'Formulaire 653DE49DJS-noir-03 ?'",
+                "o1":{
+                    "text":"Aller lui parler",
+                    "next":"cnoir"
+                },
+                "o2":{
+                    "text":"Euh le quoi ?",
+                    "next":"7B2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"8"
+                }
+            },
+            "7B2":{
+                "titre" : "le formulaire 653DE49DJS-noir-03",
+                "context" : "'Formulaire 653DE49DJS-noir-03. Ne vous occupez que de le remplir, le reste ne vous regarde pas. Autre chose ?'",
+                "o1":{
+                    "text":"Lui parler plus",
+                    "next":"cnoir"
+                },
+                "o2":{
+                    "text":"Plus d'explications ?",
+                    "next":"7B2"
+                },
+                "o3":{
+                    "text":"Pardon je ne suis pas au bon endroit",
+                    "next":"8"
+                }
+            },
+            "7C":{
+                "titre" : "le fond de couloir",
+                "context" : "Au fond du couloir se dresse une lourde porte en bois avec, dessus en écriture dorée 'Monsieur l'ambassadeur'. ",
+                "o1":{
+                    "text":"Revenir vers les deux salles d'avant",
+                    "next":"7"
+                },
+                "o2":{
+                    "text":"Toquer et entrer dans le bureau de l'ambassadeur",
+                    "next":"7C"
+                },
+                "o3":{
+                    "text":"Revenir dans le hall",
                     "next":"8"
                 }
             },
             "8":{
                 "titre" : "Dans le hall",
-                "context" : "",
+                "context" : "Vous êtes dans le hall. Trois choix s'offrent à vous, emprunter la porte orange, monter les escalier et accéder à l'étage, emprunter le couloir",
                 "o1":{
                     "text":"Porte",
-                    "next":"Test"
+                    "next":"4A"
                 },
                 "o2":{
                     "text":"Escalier",
@@ -338,13 +588,67 @@
                     "text":"Couloir",
                     "next":"7"
                 }
+            },
+            "jaune":{
+                "nom" : "Mario Giallo",
+                "desc" : "Un employé qui a la quarantaine vous fait face. Ses cheveux commencent à devenir gris et il porte un vieux costume gris. Il a l'air fatigué, excédé et semble vouloir rentrer chez lui.",
+                "form" : "jaune",
+                "base" : "Faites vite, j'ai d'autres choses à faire",
+                "gos" : "Vous ne pouvez pas faire confiance à tout le monde ici pour sûr, mais moi, je ne vous ferai jamais défaut",
+                "cons" : "Retenez bien : vous devez présenter à l'ambassadeur le formulaire orange avant le blanc. Ah aussi, le premier formulaire à présenter est le orange.",
+                "sig" : "Voila pour vous. Signez ici la et la.",
+                "ret" : "6"
+            },
+            "blanc":{
+                "nom" : "Giovanni Bianco",
+                "desc" : "Un jeune employé vous sourit. Il a un appareil dentaire transparent et le regard pétillant. Il semble être excessivement motivé.",
+                "form" : "blanc",
+                "base" : "Comment puis-je vous etre utile mon bon monsieur ?",
+                "gos" : "Oh je suis si heureux que vous me le demandiez ! Le moins que l'on puisse dire, c'est qu'ici, il y a des ripoux. Et croyez moi, mon voisin Giallo, au formulaire jaune, c'est le pire de tous. Il ment comme il respire ce filou.",
+                "cons" : "Ah les démarches sont un peu dures a comprendre, je vous l'accorde. Alors le truc exotique ici, c'est que dans le protocole, c'est écrit que vous deviez présenter un des formulaires deux fois de suite. Juste un, le reste vous le présenterez une fois. Aussi je sais que vous devez présenter mon formulaire avant le noir. C'est tout ce que je sais, désolé j'ai un peu oublié cette partie-là",
+                "sig" : "Pas de soucis ! Vous pouvez emprunter mon stylo si vous voulez.",
+                "ret" : "6"
+            },
+            "bleu":{
+                "nom" : "Timéo Azzuro",
+                "desc" : "Un jeune homme larmoyant est assi au bureau. Il a le visage enfoui dans ses mains et le pauvre homme semble sangloter.",
+                "form" : "bleu",
+                "base" : "Qu'est ce que je peux faire pour vous ?",
+                "gos" : "Ah la vie ici est monotone, triste. Tout est calme, mais cela pourrait l'être encore plus si mon collègue Bianco arrêtait de mentir toutes les deux minutes.",
+                "cons" : "Alors ... ce que je peux vous dire, c'est que mon formulaire n'est pas le dernier à donner à l'ambassadeur, et qu'il vous faudra donner le blanc avant le jaune",
+                "sig" : "Bien sûr ... prenez-en un sur la pile ici.",
+                "ret" : "7"
+            },
+            "orange":{
+                "nom" : "Lorenzo Arancio",
+                "desc" : "Vous voyez un homme se cachant derrière une pile de papiers orange. Il semble trembler et éviter votre regard",
+                "form" : "orange",
+                "base" : "Oui ... ? C'est pourquoi ... ?",
+                "gos" : "Si je parle trop ... je peux m'attirer des ennuis. Juste pour ... votre intérêt, ne faites confiance à absolument personne ici. Tout le monde ment.",
+                "cons" : "M..Mon formulaire, vous devez le présentez deux fois. Et s..si vous avez la bonne combinaison, bah vous le saurez parce que les initiales forment un mot en français.",
+                "sig" : "V..Voila un formulaire. Signez en bas et remplissez ces champs la.",
+                "ret" : "8"
+            },
+            "noir":{
+                "nom" : "Agostino Nero",
+                "desc" : "Un homme à lunettes élegant est assis jambes croisées. Il tape sur une vieille machine à écrire, à la vitesse de l'éclair",
+                "form" : "noir",
+                "base" : "[tic tic tic] Oui c'est pourquoi ?",
+                "gos" : "[tic tic] Ah c'est pas compliqué ici, 3 personnes, je ne citerai pas de nom par respect [tic tic tic] sont de gros mythomanes. De vous je me méfierais.",
+                "cons" : "Mon formulaire, présentez le en avant dernier, deux fois suivies.",
+                "sig" : "Affirmatif, prenez un exemplaire et un stylo si vous n'en avez pas",
+                "ret" : "7"
             }
         };
         document.getElementById("lettre").style.display = "none";
         document.getElementById("burnout").style.display = "none";
+        document.getElementById("inter").style.display = "none";
+        document.getElementById("test_cont").style.display = "none";
         function apply(st){
             if (st === "site"){
                 document.getElementById("lettre").style.display = "none";
+                document.getElementById("inter").style.display = "none";
+                document.getElementById("test_cont").style.display = "none";
                 document.getElementById("story").style.display = "block";
                 document.getElementById("titre").innerText=table["0"]["titre"];
                 document.getElementById("context").innerText=table["0"]["context"];
@@ -356,17 +660,36 @@
             else if (st === "lettre"){
                 document.getElementById("lettre").style.display = "block";
                 document.getElementById("story").style.display = "none";
+                document.getElementById("inter").style.display = "none";
+                document.getElementById("test_cont").style.display = "none";
+
             }
             else if(st[0] === 'b'){
                 document.getElementById("burnout").style.display = "block";
                 document.getElementById("story").style.display = "none";
                 document.getElementById("lettre").style.display = "none";
+                document.getElementById("inter").style.display = "none";
+                document.getElementById("test_cont").style.display = "none";
                 document.getElementById("burndes").innerText = st.substring(1);
                 action= '0';
+            }
+            else if(st[0] === 'c'){
+                document.getElementById("burnout").style.display = "none";
+                document.getElementById("story").style.display = "none";
+                document.getElementById("lettre").style.display = "none";
+                document.getElementById("test_cont").style.display = "none";
+                document.getElementById("inter").style.display = "block";
+                document.getElementById("fonc_des").innerText = table[st.substring(1)]["desc"];
+                document.getElementById("nom").innerText = table[st.substring(1)]["nom"];
+                document.getElementById("bulle").innerText = table[st.substring(1)]["base"];
+                emp = table[st.substring(1)]["form"];
+                action = table[st.substring(1)]["ret"];
             }
             else {
                 document.getElementById("lettre").style.display = "none";
                 document.getElementById("burnout").style.display = "none";
+                document.getElementById("test_cont").style.display = "none";
+                document.getElementById("inter").style.display = "none";
                 document.getElementById("story").style.display = "block";
                 document.getElementById("titre").innerText=table[st]["titre"];
                 document.getElementById("context").innerText=table[st]["context"];
@@ -388,6 +711,26 @@
                }
            }
         }
+        function cons(){
+            document.getElementById("bulle").innerText = table[emp]["cons"];
+        }
+        function gossip(){
+            document.getElementById("bulle").innerText = table[emp]["gos"];
+        }
+        function formu(){
+            document.getElementById("bulle").innerText = table[emp]["sig"];
+            if(document.getElementById(emp) === null){
+                let tab = document.getElementById("inv");
+                let cell = document.createElement("td");
+                cell.innerText = "formulaire " + emp;
+                cell.setAttribute("id",emp);
+                tab.appendChild(cell);
+            }
+        }
+        function go_away(){
+            apply(action);
+        }
+
         apply("0");
     </script>
 </body>
