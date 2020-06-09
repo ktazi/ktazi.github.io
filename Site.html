@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Visa Onéchyan</title>
 <style>
     #page{
         border: 5px solid #019ABB;
@@ -110,9 +113,7 @@
         align-content: center;
     }
 </style>
-<head>
-    <meta charset="UTF-8">
-    <title>Visa Onéchyan</title>
+
 </head>
 <body>
     <div id="page">
@@ -257,14 +258,14 @@
             let date = new Date(document.getElementById("birthday").value);
             let today = new Date();
             let vic = document.getElementById("nationality").value !== "Nom5" &&
-                (today.getFullYear() - date.getFullYear())/document.getElementById("flu").value > 1 &&
-                document.getElementById("zebra").value === "zebra1" &&
-                document.getElementById("anthem").value === "anthem1" &&
-                document.getElementById("street").value === "street2" &&
-                document.getElementById("Bradley/Mousseline").value === "Bradley/Mousseline2" &&
-                document.getElementById("Elon/Mousseline").value === "Elon/Mousseline2" &&
-                document.getElementById("Bread").value === "Bread1";
-
+                (document.getElementById("flu").value === "0" || (today.getFullYear() - date.getFullYear())/document.getElementById("flu").value > 1) &&
+                document.getElementById("zebra1").checked &&
+                document.getElementById("anthem1").checked &&
+                document.getElementById("street2").checked &&
+                document.getElementById("Bradley/Mousseline2").checked &&
+                document.getElementById("Elon/Mousseline2").checked &&
+                document.getElementById("conspiracy2").checked &&
+                document.getElementById("Bread1").checked;
             if(!verif()){
                 alert("veuillez terminer de remplir le formulaire");
             }
