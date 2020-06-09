@@ -257,7 +257,7 @@
             let date = new Date(document.getElementById("birthday").value);
             let today = new Date();
             let vic = document.getElementById("nationality").value !== "Nom5" &&
-                (today.getFullYear() - date.getFullYear())/document.getElementById("flu").value < 1 &&
+                (today.getFullYear() - date.getFullYear())/document.getElementById("flu").value > 1 &&
                 document.getElementById("zebra").value === "zebra1" &&
                 document.getElementById("anthem").value === "anthem1" &&
                 document.getElementById("street").value === "street2" &&
