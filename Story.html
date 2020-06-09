@@ -13,15 +13,20 @@
             padding: 10px;
             background-color: black;
             border: 1px solid;
-            height: 800px;
+            margin-bottom: 20%;
         }
         select{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 20px;
         }
         option{
             font-size: 20px;
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
+        }
+        table{
+            margin-left: 5%;
+            margin-right: 5%;
+            padding: 10px;
         }
         .cont{
             text-align: center;
@@ -36,11 +41,11 @@
             margin-right: 30%;
         }
         .quest{
-            font-family: "Snell Roundhand";
+            font-family: "Snell Roundhand",serif;
             font-size: 15px;
         }
         .manusc{
-            font-family: "Snell Roundhand";
+            font-family: "Snell Roundhand",serif;
             font-size: 15px;
             color:darkblue;
             background-color: bisque;
@@ -50,7 +55,7 @@
             background-color: black;
             border: 1px solid black;
             color: white;
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 15px;
             margin-bottom: 5px;
             margin-top: 5px;
@@ -61,7 +66,7 @@
             color: black;
             margin-bottom: 5px;
             margin-top: 5px;
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 15px;
         }
         #story{
@@ -69,7 +74,7 @@
             margin-bottom: auto;
         }
         #logo{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 50px;
             color : black;
             margin-left: auto;
@@ -78,13 +83,13 @@
         #desc{
             margin-left: 20%;
             margin-right: 20%;
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 20px;
             padding: 10px;
             border: 1px solid;
         }
         #letter{
-            font-family: "Snell Roundhand";
+            font-family: "Snell Roundhand",serif;
             font-size: 20px;
             color:darkblue;
             background-color: bisque;
@@ -93,29 +98,29 @@
             margin:10px;
         }
         #context{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 20px;
             color:white
         }
         #lettre_t{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 20px;
             color:white;
 
         }
         #titre{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 40px;
             color:white;
         }
         #burndes{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 20px;
             color:white;
         }
         #burntit{
             font-size: 50px;
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             color:white;
         }
         #test{
@@ -126,14 +131,14 @@
             background-color: antiquewhite;
         }
         #test_des{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             font-size: 30px;
             color:black;
         }
         #test_texte{
             margin-left: 20%;
             margin-right: 20%;
-            font-family: "Courier New ";
+            font-family: "Courier New ",serif;
             font-size: 20px;
             color:black;
         }
@@ -144,7 +149,7 @@
             align-content: center;
             background-color: black;
             color:white;
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
         }
         #dialogue{
             margin: 3% 20%;
@@ -180,46 +185,55 @@
             align-content: center;
             background-color: white;
             color:black;
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             display: flex;
             flex-direction: column;
             margin-bottom: 20px;
         }
         #site{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             color : white;
         }
         #amba{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             color : white;
         }
         #di{
             color :black;
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             margin-right: 20%;
             margin-left: 20%;
         }
         #congrats{
-            font-family: "Courier New";
+            font-family: "Courier New",serif;
             margin-right: 20%;
             margin-left: 20%;
+        }
+        #ret{
+            width: 100%;
+            text-align: center;
+            font-family: "Courier New",serif;
         }
     </style>
 </head>
     <header>
         <div class="cont"><h1 id="logo">Game of Visa</h1></div>
+        <div id="ret">
+            <a href="Index.html" >Retour à l'avant propos</a>
+        </div>
         <p id="desc">Après avoir travaillé durement pendant 30 ans en tant que secrétaire au sein d'un cabinet d'avocat,
             vous n'en pouvez plus de faire de la paperasse. Votre salut ? Un séjour sur l'ile paradisiaque de Onéchyan,
             absolument magnifique mais réputée quasi-inaccessible à cause de procédures administratives trop complexes.
             Triompherez vous de ce dictat bureaucrate ? Eviterez-vous le burnout ? C'est à vous de jouer.
         </p>
+
     </header>
     <div id="inventory" class="cont">
+        <h2>Inventaire</h2>
         <table class="cont">
-         <h2>Inventaire</h2>
          <tr id="inv">
             <th>
-                Vos objets :
+                Objets :
             </th>
         </tr>
         <tr>
@@ -342,6 +356,7 @@
     <h1>Vous avez échappé au blackout !</h1>
     <img src="approved-rubber-stamps-vector.jpg" alt="approved">
 </div>
+
     <script type="text/javascript">
         let action = "0";
         let emp = "blanc";
