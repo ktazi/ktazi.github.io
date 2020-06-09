@@ -81,9 +81,14 @@
         
     }
     #help{
-        border: none;
-        width: 110px;
-        background-color: #2DC1E1;
+        color: #020278;
+        width: max-content;
+    }
+    #help:hover{
+        position: absolute;
+        top: 1500px;
+        left: 100px;
+        font-size: 10em;
 
     }
 </style>
@@ -187,7 +192,7 @@
                             <label for="Elon/Mousseline2">Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12 </label><input type="radio" id="Elon/Mousseline2" name="Elon/Mousseline" value="Notre Tout-Puissant Bien-Aimé Lord Suprême Mousseline 12">
                         </div>
                         <a><br></a>
-                        <label for="pain">Pain au chocolat ou “””””chocolatine””””” ?</label><div id="Bread">
+                        <label for="pain">Pain au chocolat ou “””””chocolatine””””” ?</label><div id="pain">
                             <label for="Bread1">Pain au chocolat</label><input type="radio" id="Bread1" name="pain" value="Yes">
                             <label for="Bread2">Chocolatine </label><input type="radio" id="Bread2" name="pain" value="No">
                         </div>
@@ -211,7 +216,7 @@
             </form>
         </div>
         <div id="bot">
-            <button id="help">Besoin d'aide ?</button>
+            <a id="help">Besoin d'aide ?</a>
             <a href="Error.html">  Condition générales d'utilisations</a>
             <a href="Error.html">  Accord tacite de non droit de penser</a>
             <a href="Error.html">  Commande uber eat</a>
@@ -220,7 +225,8 @@
     </div>
     <script>
         let submitBut = document.querySelector("#submit");
-        submitBut.addEventListener('click', submit)
+        submitBut.addEventListener('click', submit);
+
         function submit(){
             let date = new Date(document.getElementById("birthday").value);
             let today = new Date();
@@ -232,7 +238,68 @@
                 document.getElementById("Bradley/Mousseline").value === "Bradley/Mousseline2" &&
                 document.getElementById("Elon/Mousseline").value === "Elon/Mousseline2" &&
                 document.getElementById("Bread").value === "Bread1";
-            console.log(vic);
+
+            if(!verif()){
+                alert("veuillez terminer de remplir le formulaire");
+            }
+            else{
+                if(vic){
+                    alert("Vous allez obtenir votre visa");
+                }
+                else{
+                    alert("c'est raté");
+                }
+            }
+
+        }
+        function verif(){
+            let full = document.getElementById("name").value !== "" &&
+                document.getElementById("nickname").value !== "" &&
+                document.getElementById("nationality").value !== "" &&
+                document.getElementById("birthday").value !== "" &&
+                document.getElementById("religion").value !== "" &&
+                document.getElementById("sexe").value !=="" &&
+                document.getElementById("size").value !== "" &&
+                document.getElementById("weight").value !== "" &&
+                document.getElementById("hairColor").value !== "" &&
+                document.getElementById("flu").value !== "" &&
+                document.getElementById("conspiracy").value !== "" &&
+                document.getElementById("interest").value !== "" &&
+                document.getElementById("zebra").value !== "" &&
+                document.getElementById("anthem").value !== "" &&
+                document.getElementById("maxwell").value !== "" &&
+                document.getElementById("street").value !== "" &&
+                document.getElementById("music").value !== "" &&
+                document.getElementById("Bradley/Mousseline").value !== "" &&
+                document.getElementById("Elon/Mousseline").value !== "" &&
+                document.getElementById("pain").value !== "" &&
+                document.getElementById("chinese").value !== "" &&
+                document.getElementById("arab").value !== "";
+
+            return full;
+        }
+
+        let trollVar = 0;
+        let helpBut = document.querySelector("#help");
+        helpBut.addEventListener('mouseenter', helpButtonEventEnt);
+        helpBut.addEventListener('mouseleave', helpButtonEventLea);
+
+        function helpButtonEventEnt(){
+            trollVar++;
+            if(trollVar >35){
+                document.getElementById("help").innerText = "Décidement !";
+            }
+            else{
+                document.getElementById("help").innerText = "Raté";
+            }
+        }
+        function helpButtonEventLea(){
+            if(trollVar >35){
+                document.getElementById("help").innerText = "Le bouton besoin d'aide participe actuellement a une manifestation contre la surexploitation des boutons travailleurs";
+            }
+            else{
+                document.getElementById("help").innerText = "Besoin d'aide ? :)";
+            }
         }
     </script>
 </body>
